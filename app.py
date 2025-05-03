@@ -9,5 +9,5 @@ def home():
 import os
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 10000))  # Render 환경이 제공하는 포트 사용
+    port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
