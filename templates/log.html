@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}📚 학습 로그{% endblock %}
+
+{% block content %}
+  <h1>📚 은서의 학습 로그</h1>
+
+  <article class="log-entry">
+    <h2>2025.05.04 — 첫 웹 실험실 구축과 구조 설계</h2>
+
+    <h4>🧭 오늘의 흐름 요약</h4>
+    <ul>
+      <li>Flask 프로젝트 구조를 처음부터 직접 설계</li>
+      <li>VSCode와 GitHub 연동 문제 해결 (CLI 사용)</li>
+      <li>템플릿 파일들 역할 분리 및 재구성</li>
+      <li>Render를 통한 첫 실시간 배포 성공</li>
+      <li>`/lab`에서 실험 항목 실시간 추가 기능 구현</li>
+      <li>Git rebase 충돌 수동 병합 및 처리</li>
+    </ul>
+
+    <h4>🧪 구현된 기능</h4>
+    <ul>
+      <li>Flask 서버 세팅 및 라우팅 구성</li>
+      <li>Jinja 템플릿 상속 구조 구현 (`base.html` 기반)</li>
+      <li>사이드바 + 콘텐츠 UI 레이아웃 정리</li>
+      <li>JavaScript를 이용한 DOM 조작 실험</li>
+      <li>GitHub ↔ Render 자동 배포 연결 성공</li>
+    </ul>
+
+    <h4>🧩 다음 작업 아이디어</h4>
+    <ul>
+      <li>`/log`에 글쓰기 기능 추가</li>
+      <li>`/lab/user`, `/lab/gpt` 세부 실험 페이지 구성</li>
+    </ul>
+  </article>
+{% endblock %}

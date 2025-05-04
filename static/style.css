@@ -44,4 +44,16 @@ body {
     padding: 40px;
   }
   
+  .log-entry {
+    background-color: #fff;
+    padding: 24px;
+    margin-top: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    border-left: 4px solid #4a90e2;
+  }
+  
+  .log-entry h2 {
+    margin-top: 0;
+  }
   
