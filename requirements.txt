@@ -1,6 +1,3 @@
-<<<<<<< HEAD
 flask
+
 Flask==2.2.5
-=======
-flask
->>>>>>> e3475ced5d59e51fd11fc06b6c58d6816accb014
