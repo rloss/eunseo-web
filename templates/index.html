@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>은서의 첫 홈페이지</title>
-</head>
-<body>
-    <h1>은서의 첫 홈페이지입니다.</h1>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}홈 - 은서의 실험실{% endblock %}
+
+{% block content %}
+  <h1>👋 최은서의 기술 실험실에 오신 걸 환영합니다!</h1>
+  <p>여기는 은서가 배우고 실험하며 성장해나가는 공간입니다.</p>
+
+  <div style="margin-top: 30px;">
+    <a href="/log">
+      <button style="margin-right: 10px;">📚 학습 로그 보기</button>
+    </a>
+    <a href="/lab">
+      <button>🧪 실험실 들어가기</button>
+    </a>
+  </div>
+{% endblock %}
