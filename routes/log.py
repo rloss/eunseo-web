@@ -1,42 +1,37 @@
 from flask import Blueprint, render_template, request, redirect
-import json
-import os
+import sqlite3
 from datetime import datetime
+import os
 
 log_bp = Blueprint('log', __name__)
-
-LOG_FILE = os.path.join("data", "log.json")
+DB_PATH = os.path.join("data", "log.db")
 
 @log_bp.route("/log", methods=["GET", "POST"])
 def log():
     if request.method == "POST":
-        new_entry = {
-            "date": datetime.now().strftime("%Y.%m.%d %H:%M"),
-            "title": request.form["title"],
-            "content": request.form["content"]
-        }
+        title = request.form["title"]
+        content = request.form["content"]
+        created_at = datetime.now().strftime("%Y.%m.%d %H:%M")
 
-        # 기존 로그 불러오기
-        try:
-            with open(LOG_FILE, "r", encoding="utf-8") as f:
-                logs = json.load(f)
-        except FileNotFoundError:
-            logs = []
-
-        # 새 로그 추가
-        logs.insert(0, new_entry)
-
-        # 다시 저장
-        with open(LOG_FILE, "w", encoding="utf-8") as f:
-            json.dump(logs, f, ensure_ascii=False, indent=2)
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+        cursor.execute(
+            "INSERT INTO logs (title, content, created_at) VALUES (?, ?, ?)",
+            (title, content, created_at)
+        )
+        conn.commit()
+        conn.close()
 
         return redirect("/log")
 
-    # GET 요청: 로그 리스트 보여주기
-    try:
-        with open(LOG_FILE, "r", encoding="utf-8") as f:
-            logs = json.load(f)
-    except FileNotFoundError:
-        logs = []
+    # GET 요청: 로그 조회
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute("SELECT title, content, created_at FROM logs ORDER BY created_at DESC")
+    logs = [
+        {"title": row[0], "content": row[1], "date": row[2]}
+        for row in cursor.fetchall()
+    ]
+    conn.close()
 
     return render_template("log.html", logs=logs)
