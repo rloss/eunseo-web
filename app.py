@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return "✅ Flask 앱이 제대로 작동 중입니다."
 
 @app.route("/log")
 def log():
