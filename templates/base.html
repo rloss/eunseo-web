@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}최은서의 실험실{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <nav class="sidebar">
+      <h2>은서의 실험실</h2>
+      <ul>
+        <li><a href="/">🏠 홈</a></li>
+        <li><a href="/log">📚 로그</a></li>
+        <li><a href="/lab">🧪 실험실</a></li>
+      </ul>
+    </nav>
+    <main class="content">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+</body>
+</html>

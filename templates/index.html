@@ -1,63 +1,9 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>은서 실험실</title>
-  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Gowun Dodum', sans-serif;
-      background-color: #f2f2f2;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+{% extends "base.html" %}
 
-    .card {
-      background-color: #ffffff;
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      width: 360px;
-    }
+{% block title %}홈 - 은서의 실험실{% endblock %}
 
-    h1 {
-      font-size: 1.8rem;
-      margin-bottom: 12px;
-      color: #222;
-    }
-
-    p {
-      font-size: 1rem;
-      color: #555;
-      margin-bottom: 24px;
-    }
-
-    button {
-      background-color: #4a90e2;
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      font-size: 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #3578c0;
-    }
-  </style>
-</head>
-<body>
-  <div class="card">
-    <h1>은서의 실험 웹</h1>
-    <p>지금 이 공간은 구조와 감각을 동시에 배우는 테스트베드입니다.</p>
-    <button>클릭해보기</button>
-  </div>
-</body>
-</html>
-
+{% block content %}
+  <h1>환영합니다 👋</h1>
+  <p>여기는 최은서의 기술 학습 페이지이자 실험실입니다.</p>
+  <p>왼쪽 메뉴에서 '로그' 또는 '실험실'을 눌러 실험을 시작하세요.</p>
+{% endblock %}
