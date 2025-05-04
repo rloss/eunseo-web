@@ -3,35 +3,123 @@
   <head>
     <meta charset="UTF-8">
     <title>{% block title %}은서의 실험실{% endblock %}</title>
-    <!-- 폰트 추가 -->
+    
+    <!-- 폰트: 고운돋움 -->
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
-    <!-- 스타일 연결 -->
+
+    <!-- 스타일 -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Gowun Dodum', sans-serif;
+        background: linear-gradient(120deg, #FAF4EC, #FFE0E0);
+        color: #333;
+      }
+
+      .layout {
+        display: flex;
+      }
+
+      /* 사이드바 */
+      .sidebar {
+        width: 200px;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #FFE4E1;
+        padding: 30px 20px;
+        display: flex;
+        flex-direction: column;
+        z-index: 998;
+        transform: translateX(0);
+        transition: transform 0.3s ease;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .sidebar.closed {
+        transform: translateX(-100%);
+      }
+
+      .brand {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+        color: #5A3E36;
+      }
+
+      .sidebar a {
+        text-decoration: none;
+        color: #5A3E36;
+        font-size: 1.1rem;
+        margin: 10px 0;
+        padding: 8px;
+        border-radius: 6px;
+        transition: background 0.3s;
+      }
+
+      .sidebar a:hover {
+        background-color: #FFD6D6;
+      }
+
+      /* 콘텐츠 영역 */
+      .content {
+        margin-left: 200px;
+        padding: 60px 40px;
+        flex-grow: 1;
+        transition: margin-left 0.3s ease;
+      }
+
+      .sidebar.closed + .content {
+        margin-left: 0;
+      }
+
+      /* 토글 버튼 */
+      #toggle-btn {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 999;
+        background: #F9A9B2;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        font-size: 1.5rem;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+    </style>
   </head>
-  
-<body>
-  <div class="layout">
+
+  <body>
+    <!-- 토글 버튼은 레이아웃 바깥 -->
     <button id="toggle-btn">☰</button>
-  
-    <nav class="sidebar open" id="sidebar">
-      <h2 class="brand">🧪 은서의 실험실</h2>
-      <a href="/">🏠 홈</a>
-      <a href="/log">📚 로그</a>
-      <a href="/lab">🧪 실험실</a>
-    </nav>
-  
-    <main class="content">
-      {% block content %}{% endblock %}
-    </main>
-  </div>
-</body>
 
-<script>
-  const toggleBtn = document.getElementById("toggle-btn");
-  const sidebar = document.getElementById("sidebar");
+    <div class="layout">
+      <nav class="sidebar open" id="sidebar">
+        <h2 class="brand">🧪 은서의 실험실</h2>
+        <a href="/">🏠 홈</a>
+        <a href="/log">📚 로그</a>
+        <a href="/lab">🧪 실험실</a>
+      </nav>
 
-  toggleBtn.addEventListener("click", () => {
-    sidebar.classList.toggle("closed");
-  });
-</script>
+      <main class="content">
+        {% block content %}{% endblock %}
+      </main>
+    </div>
+
+    <script>
+      const toggleBtn = document.getElementById("toggle-btn");
+      const sidebar = document.getElementById("sidebar");
+
+      toggleBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("closed");
+      });
+    </script>
+  </body>
 </html>
