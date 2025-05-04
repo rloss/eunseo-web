@@ -10,15 +10,16 @@
   </head>
   
 <body>
-  <div class="container">
-    <nav class="sidebar">
-      <h2>은서의 실험실</h2>
-      <ul>
-        <li><a href="/">🏠 홈</a></li>
-        <li><a href="/log">📚 로그</a></li>
-        <li><a href="/lab">🧪 실험실</a></li>
-      </ul>
+  <div class="layout">
+    <button id="toggle-btn">☰</button>
+  
+    <nav class="sidebar open" id="sidebar">
+      <h2 class="brand">🧪 은서의 실험실</h2>
+      <a href="/">🏠 홈</a>
+      <a href="/log">📚 로그</a>
+      <a href="/lab">🧪 실험실</a>
     </nav>
+  
     <main class="content">
       {% block content %}{% endblock %}
     </main>
