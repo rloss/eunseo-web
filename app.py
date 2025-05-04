@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import os
 
 app = Flask(__name__)
 
@@ -6,8 +7,14 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")
 
-import os
+@app.route("/log")
+def log():
+    return render_template("log.html")
+
+@app.route("/lab")
+def lab():
+    return render_template("lab.html")
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 10000))  # Render 환경이 제공하는 포트 사용
+    port = int(os.environ.get("PORT", 10000))  # Render에서 자동 지정하거나 기본값 10000
     app.run(host="0.0.0.0", port=port)
