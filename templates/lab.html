@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}실험실 - 은서의 실험실{% endblock %}
+
+{% block content %}
+  <h1>🧪 은서의 실험실</h1>
+  <p>현재 진행 중인 실험 목록입니다. 아래에서 새로운 실험 주제를 직접 추가할 수 있어요.</p>
+
+  <ul id="experiment-list">
+    <li>사용자 인터랙션 실험</li>
+    <li>GPT 연동 실험</li>
+  </ul>
+
+  <div style="margin-top: 20px;">
+    <input type="text" id="new-experiment" placeholder="새 실험 제목 입력" />
+    <button onclick="addExperiment()">➕ 추가</button>
+  </div>
+
+  <script>
+    function addExperiment() {
+      const input = document.getElementById('new-experiment');
+      const value = input.value.trim();
+      if (value === "") return;
+
+      const ul = document.getElementById('experiment-list');
+      const li = document.createElement('li');
+      li.textContent = value;
+      ul.appendChild(li);
+
+      input.value = "";
+    }
+  </script>
+{% endblock %}
